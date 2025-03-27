@@ -8,6 +8,7 @@ import torch
 from tqdm import tqdm
 from torchvision import transforms
 from ultralytics import YOLO
+import argparse
 
 sys.path.append(os.path.abspath("LiteMono"))
 import networks
@@ -173,11 +174,30 @@ def run_video_analysis(video_path, save_path=None):
         cv2.destroyAllWindows()
 
 
+
 if __name__ == '__main__':
-    input_dir = '../test'
-    output_dir = '../out'
-    for file in os.listdir(input_dir):
-        print('from ', os.path.join(input_dir, file))
-        print('to', os.path.join(output_dir, file))
-        run_video_analysis(os.path.join(input_dir, file),os.path.join(output_dir, file))
-        print(f'file {file} done')
+    parser = argparse.ArgumentParser(description='Video analysis tool')
+    parser.add_argument('--mode', choices=['save_all', 'single_infer'], required=True)
+    parser.add_argument('--input', required=True, help='Input file path (for single_infer) or input directory (for save_all)')
+    parser.add_argument('--output', help='Output directory (only used in "save_all" mode)')
+
+    args = parser.parse_args()
+
+    if args.mode == 'save_all':
+        input_dir = args.input
+        output_dir = args.output
+
+        if not output_dir:
+            raise ValueError('--output directory must be specified in "save_all" mode.')
+
+        for file in os.listdir(input_dir):
+            input_path = os.path.join(input_dir, file)
+            output_path = os.path.join(output_dir, file)
+            print('from:', input_path)
+            print('to:', output_path)
+            run_video_analysis(input_path, output_path)
+            print(f'file {file} done')
+
+    elif args.mode == 'single_infer':
+        input_path = args.input
+        run_video_analysis(input_path)
