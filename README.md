@@ -21,12 +21,13 @@ Please download the following files and place them in the appropriate directorie
 - 📄 [`gt_depths.npz`](https://drive.google.com/file/d/1OpMHwBZrsHzO-lOheG2lbpUGAmow-L_-/view?usp=sharing) — Precomputed ground truth depths
 - 📄 [`bdd100k_labels_images_train_coco.json`](https://drive.google.com/file/d/1cqueQXoroEzOQc874oo6jjb5nTvermVx/view?usp=sharing) — BDD100K annotations in COCO format
 - 📄 [`best.pt`](https://drive.google.com/file/d/1Yqk-uYAM65qdumR4kOspXOrYExv4Ex1W/view?usp=sharing) - 'best.pt' file of finetuned YOLO
-- 📄 [models](https://surfdrive.surf.nl/files/index.php/s/CUjiK221EFLyXDY) - Depth-estimation weight from Lite-Mono.
+- 📄 [`models`](https://surfdrive.surf.nl/files/index.php/s/CUjiK221EFLyXDY) - Depth-estimation weight from Lite-Mono.
 
 ---
 
 ## 🗂️ File Structure 
 - Download models/ and gt_depths.npz, bdd100k_labels_images_train_coco.json as the following structure.
+```
 project/
 ├── models
 ├────lite-mono_640x192
@@ -36,7 +37,7 @@ project/
 ├── bdd100k_labels_images_train_coco.json
 ├── gt_depths.npz
 └── demo.py
-
+```
 ---
 
 ## 📁 File Descriptions
