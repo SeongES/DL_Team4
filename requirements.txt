@@ -1,0 +1,4 @@
+ultralytics
+pyttsx3
+gTTS
+pygame
